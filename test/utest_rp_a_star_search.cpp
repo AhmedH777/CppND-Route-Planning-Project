@@ -102,10 +102,10 @@ TEST_F(RoutePlannerTest, TestConstructFinalPath) {
 
     // Test the path.
     EXPECT_EQ(path.size(), 3);
-    EXPECT_FLOAT_EQ(start_node->x, path.front().x);
-    EXPECT_FLOAT_EQ(start_node->y, path.front().y);
-    EXPECT_FLOAT_EQ(end_node->x, path.back().x);
-    EXPECT_FLOAT_EQ(end_node->y, path.back().y);
+    EXPECT_FLOAT_EQ(start_node->x, path.back().x);
+    EXPECT_FLOAT_EQ(start_node->y, path.back().y);
+    EXPECT_FLOAT_EQ(end_node->x, path.front().x);
+    EXPECT_FLOAT_EQ(end_node->y, path.front().y);
 }
 
 
@@ -113,8 +113,8 @@ TEST_F(RoutePlannerTest, TestConstructFinalPath) {
 TEST_F(RoutePlannerTest, TestAStarSearch) {
     route_planner.AStarSearch();
     EXPECT_EQ(model.path.size(), 33);
-    RouteModel::Node path_start = model.path.front();
-    RouteModel::Node path_end = model.path.back();
+    RouteModel::Node path_start = model.path.back();
+    RouteModel::Node path_end = model.path.front();
     // The start_node and end_node x, y values should be the same as in the path.
     EXPECT_FLOAT_EQ(start_node->x, path_start.x);
     EXPECT_FLOAT_EQ(start_node->y, path_start.y);
